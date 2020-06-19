@@ -26,7 +26,9 @@ img {
 
 .cover-card { 
 	object-fit: contain;
-	padding: 40px;	
+	padding: 40px;
+	display: flex;
+	align-items: center;
 }
 
 .order-container {
