@@ -36,4 +36,4 @@ class DBConnect:
                         Column('date', String)
                         )
         self.booking = booking
-        self.metadata.create_all(engine)
+        self.metadata.create_all(self.engine)
