@@ -5,34 +5,51 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/ind_book.css') }}">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="navbar.html">Bookesores.io</a>
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">book</a>
-        </li>
-              <li class="nav-item">
-          <a class="nav-link" href="#">Sign up</a>
-        </li>
-              <li class="nav-item">
-          <a class="nav-link" href="#">Log in</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="navbar.html">Bookesores.io</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">book</a>
+          </li>
+                <li class="nav-item">
+            <a class="nav-link" href="#">Sign up</a>
+          </li>
+                <li class="nav-item">
+            <a class="nav-link" href="#">Log in</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
     </nav>
+    <div class="flex-container">
+      <div class="cover-card">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/71FX96Ae-PL.jpg" alt="Cover image">
+      </div>
+      <div class="details-card">
+        <div class="book-desc">
+          <h1 style="border-bottom: 2px solid #b8b8b8;margin-bottom: 0px;">Homo Deus</h1>
+          <h5>Yuval Noah Harari, 2015</h5>
+          <h6>Non-Fiction</h6>
+          <p>Sapiens showed us where we came from. Homo Deus shows us where we're going. War is obsolete. You are more likely to commit suicide than be killed in conflict. Famine is disappearing. You are at more risk of obesity than starvation. Death is just a technical problem. Equality is out - but immortality is in. What does our future hold? Yuval Noah Harari, author of the bestselling phenomenon Sapiens envisions a not-too-distant world in which we face a new set of challenges. Homo Deus explores the projects, dreams and nightmares that will shape the twenty-first century - from overcoming death to creating artificial life. It asks the fundamental questions: Where do we go from here? And how will we protect this fragile world from our own destructive powers? "Homo Deus will shock you. It will entertain you. Above all, it will make you think in ways you had not thought before". (Daniel Kahneman, author of Thinking Fast, and Slow).</p>
+        </div> 
+        <div class="order-container">
+          <button type="button" class="btn btn-secondary btn-lg">Order Now</button>
+        </div>  
+      </div>
+    </div>
 
   </body>
 </html> 
