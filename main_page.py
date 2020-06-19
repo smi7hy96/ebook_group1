@@ -18,6 +18,7 @@ def all_book():
 @app.route("/book_template/<int:id>")
 def book_template(id):
     book = DBEBooks()
+    book.create_all_tables()
     example_book(book)
     new_list = []
     result_list = book.select_one_book(id)  # will retrieve different data depending on id
