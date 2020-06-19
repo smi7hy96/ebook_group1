@@ -21,8 +21,10 @@ class DBConnect:
         ebooks = Table('ebooks', self.metadata,
                        Column('book_id', Integer, primary_key=True),
                        Column('title', String),
+                       Column('author', String),
                        Column('genre', String),
                        Column('release_date', String),
+                       Column('image_source', String),
                        Column('user_id', None, ForeignKey('users.user_id'))
                        )
         self.ebooks = ebooks
