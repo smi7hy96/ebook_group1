@@ -41,10 +41,11 @@ def book():
 #     title = request.form['title']
 #     author = request.form['author']
 #     genre = request.form['genre']
+#     description = request.form['description']
 #     release_date = request.form['release_date']
 #     image_source = request.form['image_source']
 #     book = DBEBooks()
-#     book.insert_ebook(title, author, genre, release_date, image_source)
+#     book.insert_ebook(title, author, genre, release_date, image_source, description)
 #     return render_template("index.html")
 
 

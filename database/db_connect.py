@@ -25,6 +25,7 @@ class DBConnect:
                        Column('genre', String),
                        Column('release_date', String),
                        Column('image_source', String),
+                       Column('description', String),
                        Column('user_id', None, ForeignKey('users.user_id'))
                        )
         self.ebooks = ebooks
