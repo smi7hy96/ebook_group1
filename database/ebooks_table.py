@@ -7,9 +7,11 @@ class DBEBooks(DBConnect):
         super().__init__()
 
     def insert_ebook(self, title, author, genre, release_date, image_source, description, user_id=None):
+        self.create_all_tables()
         if user_id is None:
             user_id = 1
         ins = self.ebooks.insert().values(title=title, author=author, genre=genre, release_date=release_date, image_source=image_source, description=description, user_id=user_id)
+        print(str(ins))
         result = self.conn.execute(ins)
         return result.inserted_primary_key
 

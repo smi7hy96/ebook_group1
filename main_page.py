@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 from database.ebooks_table import *
 from database.booking_table import *
 from database.users_table import *
+from database.user_example import *
+from database.example_books import *
 app = Flask(__name__)
 
 
@@ -12,16 +14,21 @@ def home():
 
 @app.route("/book_template/<int:id>")
 def book_template(id):
-    # book = DBEBooks()
-    # result = book.select_one_book(id)  # will retrieve different data depending on id
+    book = DBEBooks()
+    example_book(book)
+    new_list = []
+    result_list = book.select_one_book(id)  # will retrieve different data depending on id
     ## example query
-    result_ex = [1, "Homo Deus", "Yuval Noah Harari", "Non-Fiction", "2015", "https://images-na.ssl-images-amazon.com/images/I/71FX96Ae-PL.jpg", "Sapiens showed us where we came from. Homo Deus shows us where we're going. War is obsolete. You are more likely to commit suicide than be killed in conflict. Famine is disappearing. You are at more risk of obesity than starvation. Death is just a technical problem. Equality is out - but immortality is in. What does our future hold? Yuval Noah Harari, author of the bestselling phenomenon Sapiens envisions a not-too-distant world in which we face a new set of challenges. Homo Deus explores the projects, dreams and nightmares that will shape the twenty-first century - from overcoming death to creating artificial life. It asks the fundamental questions: Where do we go from here? And how will we protect this fragile world from our own destructive powers? 'Homo Deus will shock you. It will entertain you. Above all, it will make you think in ways you had not thought before'. (Daniel Kahneman, author of Thinking Fast, and Slow)."]  # hard-coded can remove once db active
-    title = result_ex[1]
-    author = result_ex[2]
-    genre = result_ex[3]
-    release_date = result_ex[4]
-    image_source = result_ex[5]
-    description = result_ex[6]
+    for result in result_list:
+        for value in result:
+            new_list.append(value)
+
+    title = new_list[1]
+    author = new_list[2]
+    genre = new_list[3]
+    release_date = new_list[4]
+    image_source = new_list[5]
+    description = new_list[6]
     return render_template("book_template.html", title=title, author=author, genre=genre, release_date=release_date, image_source=image_source, description=description)
 
 
