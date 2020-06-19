@@ -29,10 +29,12 @@ def book():
 # @app.route("/add_new_book", methods=['POST'])
 # def add_new_book_complete():
 #     title = request.form['title']
+#     author = request.form['author']
 #     genre = request.form['genre']
 #     release_date = request.form['release_date']
+#     image_source = request.form['image_source']
 #     book = DBEBooks()
-#     book.insert_ebook(title, genre, release_date)
+#     book.insert_ebook(title, author, genre, release_date, image_source)
 #     return render_template("index.html")
 
 
