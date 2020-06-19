@@ -10,9 +10,19 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/book_template")
-def book_template():
-    return render_template("book_template.html")
+@app.route("/book_template/<int:id>")
+def book_template(id):
+    # book = DBEBooks()
+    # result = book.select_one_book(id)  # will retrieve different data depending on id
+    ## example query
+    result_ex = [1, "Homo Deus", "Yuval Noah Harari", "Non-Fiction", "2015", "https://images-na.ssl-images-amazon.com/images/I/71FX96Ae-PL.jpg", "Sapiens showed us where we came from. Homo Deus shows us where we're going. War is obsolete. You are more likely to commit suicide than be killed in conflict. Famine is disappearing. You are at more risk of obesity than starvation. Death is just a technical problem. Equality is out - but immortality is in. What does our future hold? Yuval Noah Harari, author of the bestselling phenomenon Sapiens envisions a not-too-distant world in which we face a new set of challenges. Homo Deus explores the projects, dreams and nightmares that will shape the twenty-first century - from overcoming death to creating artificial life. It asks the fundamental questions: Where do we go from here? And how will we protect this fragile world from our own destructive powers? 'Homo Deus will shock you. It will entertain you. Above all, it will make you think in ways you had not thought before'. (Daniel Kahneman, author of Thinking Fast, and Slow)."]  # hard-coded can remove once db active
+    title = result_ex[1]
+    author = result_ex[2]
+    genre = result_ex[3]
+    release_date = result_ex[4]
+    image_source = result_ex[5]
+    description = result_ex[6]
+    return render_template("book_template.html", title=title, author=author, genre=genre, release_date=release_date, image_source=image_source, description=description)
 
 
 @app.route("/book")
