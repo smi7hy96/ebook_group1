@@ -9,11 +9,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("flip_card.html")
 
 @app.route("/new-book")
 def all_book():
     return render_template("new-book.html")
+
 
 @app.route("/book_template/<int:id>")
 def book_template(id):
