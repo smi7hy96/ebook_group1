@@ -6,7 +6,6 @@ from database.user_example import *
 from database.example_books import *
 app = Flask(__name__)
 
-
 @app.route("/")
 def home():
     return render_template("flip_card.html")
