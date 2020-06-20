@@ -58,7 +58,7 @@ def book():
 #     image_source = request.form['image_source']
 #     book = DBEBooks()
 #     book.insert_ebook(title, author, genre, release_date, image_source, description)
-#     return render_template("index.html")
+#     return render_template("index_probs_delete.html")
 
 
 if __name__ == "__main__":
