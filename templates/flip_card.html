@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"/>
-            <link rel="stylesheet" href="fonts/icomoon/style.css" />
-            <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    <link rel="stylesheet" href="fonts/icomoon/style.css"/>
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/magnific-popup.css') }}"/>
@@ -52,7 +52,8 @@
     <div class="container">
         <div class="row mb-0">
             <div class="col-md-5 ml-auto mb-0 order-md-2">
-                <img class="w-100 h-75" src="{{url_for('static', filename='images/one.jpg')}}" alt="Image" class="img-fluid rounded"/>
+                <img class="w-100 h-75" src="{{url_for('static', filename='images/one.jpg')}}" alt="Image"
+                     class="img-fluid rounded"/>
             </div>
             <div class="col-md-6 order-md-1">
                 <div class="text-left pb-1 border-primary mb-4">
@@ -73,115 +74,32 @@
             </div>
         </div>
         <div class="row">
+                        {% for t in range(6) %}
             <div class="col-md-12 mb-md-5 mb-3 col-lg-4">
-                <h2 class="font-weight-light text-primary">The Traunts</h2>
+                <h2 class="font-weight-light text-primary">{{ titles[t] }}</h2>
+                <h3></h3>
+
                 <p class="text-gray aboutCard">Click image for more info</p>
                 <div class="flip-card w-100">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img class="w-100" src="{{url_for('static', filename='images/two.jpg')}}" alt="Avatar"/>
+                            <img class="w-100" src="{{ image_sources[t] }}" alt="Avatar"/>
                         </div>
                         <div class="flip-card-back d-flex justify-content-center align-items-center">
                             <p>
-                                Perfect for lovers of Agatha Christie and The Secret History, The Truants is a
-                                seductive, unsettling, and beautifully written debut novel of literary suspense--a
-                                thrilling exploration of deceit, first love, and the depths to which obsession can drive
-                                us.
+                                <b>{{ authors[t] }}</b>
+                                <br>
+                                <i>{{ genres[t] }}</i>
+                                <br>
+                                <i>{{ release_dates[t] }}</i>
+                                <br>
+                                {{ descriptions[t] }}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 mb-md-5 mb-3 col-lg-4">
-                <h2 class="font-weight-light text-primary">HumanKind</h2>
-                <p class="text-gray aboutCard">Click image for more info</p>
-                <div class="flip-card w-100">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img class="w-100" src="{{url_for('static', filename='images/three.jpg')}}" alt="Avatar"/>
-                        </div>
-                        <div class="flip-card-back d-flex justify-content-center align-items-center">
-                            <p>From the author of the New York Times bestseller Utopia for Realists comes "the riveting
-                                pick-me-up we all need right now" (People), the #1 Dutch bestseller Humankind, which
-                                offers a "bold" (Daniel H. Pink), "extraordinary" (Susan Cain) argument that humans
-                                thrive in a crisis and that our innate kindness and cooperation have been the greatest
-                                factors in our long-term success on the planet.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 mb-md-5 mb-3 col-lg-4">
-                <h2 class="font-weight-light text-primary">The Empire Of Gold</h2>
-                <p class="text-gray aboutCard">Click image for more info</p>
-                <div class="flip-card w-100">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img class="w-100" src="{{url_for('static', filename='images/four.jpg')}}" alt="Avatar"/>
-                        </div>
-                        <div class="flip-card-back d-flex justify-content-center align-items-center">
-                            <p>
-                                The final chapter in the bestselling, critically acclaimed Daevabad Trilogy, in which a
-                                con-woman and an idealistic djinn prince join forces to save a magical kingdom from a
-                                devastating civil war.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 mb-md-5 mb-3 col-lg-4">
-                <h2 class="font-weight-light text-primary">The Empire Of Gold</h2>
-                <p class="text-gray aboutCard">Click image for more info</p>
-                <div class="flip-card w-100">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img class="w-100" src="{{url_for('static', filename='images/four.jpg')}}" alt="Avatar"/>
-                        </div>
-                        <div class="flip-card-back d-flex justify-content-center align-items-center">
-                            <p>
-                                The final chapter in the bestselling, critically acclaimed Daevabad Trilogy, in which a
-                                con-woman and an idealistic djinn prince join forces to save a magical kingdom from a
-                                devastating civil war.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 mb-md-5 mb-3 col-lg-4">
-                <h2 class="font-weight-light text-primary">The Empire Of Gold</h2>
-                <p class="text-gray aboutCard">Click image for more info</p>
-                <div class="flip-card w-100">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img class="w-100" src="{{url_for('static', filename='images/four.jpg')}}" alt="Avatar"/>
-                        </div>
-                        <div class="flip-card-back d-flex justify-content-center align-items-center">
-                            <p>
-                                The final chapter in the bestselling, critically acclaimed Daevabad Trilogy, in which a
-                                con-woman and an idealistic djinn prince join forces to save a magical kingdom from a
-                                devastating civil war.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 mb-md-5 mb-3 col-lg-4">
-                <h2 class="font-weight-light text-primary">The Empire Of Gold</h2>
-                <p class="text-gray aboutCard">Click image for more info</p>
-                <div class="flip-card w-100">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img class="w-100" src="{{url_for('static', filename='images/four.jpg')}}" alt="Avatar"/>
-                        </div>
-                        <div class="flip-card-back d-flex justify-content-center align-items-center">
-                            <p>
-                                The final chapter in the bestselling, critically acclaimed Daevabad Trilogy, in which a
-                                con-woman and an idealistic djinn prince join forces to save a magical kingdom from a
-                                devastating civil war.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
