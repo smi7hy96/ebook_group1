@@ -10,9 +10,19 @@ app = Flask(__name__)
 def home():
     return render_template("flip_card.html")
 
-@app.route("/new-book")
-def all_book():
-    return render_template("new-book.html")
+@app.route("/all-books")
+def all_books():
+    book = DBEBooks()
+    book.create_all_tables()
+    example_book(book)
+    result_list = book.select_all_books()
+    titles = result_list[0]
+    authors = result_list[1]
+    genres = result_list[2]
+    release_dates = result_list[3]
+    image_sources = result_list[4]
+    descriptions = result_list[5]
+    return render_template("all_books.html", titles=titles, authors=authors, genres=genres, release_dates=release_dates, image_sources=image_sources, descriptions=descriptions)
 
 
 @app.route("/book_template/<int:id>")

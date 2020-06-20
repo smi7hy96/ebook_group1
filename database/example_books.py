@@ -19,29 +19,29 @@ def example_book(book_new):
     print(book_new.insert_ebook("Moby Dick", "Herman Melville", "Fiction", "1851", "https://images-na.ssl-images-amazon.com/images/I/41VnFKC9srL._SX346_BO1,204,203,200_.jpg", "Ishmael, the narrator, announces his intent to ship aboard a whaling vessel. He has made several voyages as a sailor but none as a whaler. He travels to New Bedford, Massachusetts, where he stays in a whalers’ inn. Since the inn is rather full, he has to share a bed with a harpooner from the South Pacific named Queequeg. At first repulsed by Queequeg’s strange habits and shocking appearance (Queequeg is covered with tattoos), Ishmael eventually comes to appreciate the man’s generosity and kind spirit, and the two decide to seek work on a whaling vessel together. They take a ferry to Nantucket, the traditional capital of the whaling industry. There they secure berths on the Pequod, a savage-looking ship adorned with the bones and teeth of sperm whales. Peleg and Bildad, the Pequod’s Quaker owners, drive a hard bargain in terms of salary. They also mention the ship’s mysterious captain, Ahab, who is still recovering from losing his leg in an encounter with a sperm whale on his last voyage."))
 
 
-book = DBEBooks()
-book.create_all_tables()
-example_book(book)
-result = book.select_all_books()
-title_list = []
-author_list = []
-genre_list = []
-release_date_list = []
-image_source_list = []
-description_list = []
-return_list = []
-for value in result:
-    title_list.append(value[1])
-    author_list.append(value[2])
-    genre_list.append(value[3])
-    release_date_list.append(value[4])
-    image_source_list.append(value[5])
-    description_list.append(value[6])
-
-return_list.append(title_list)
-return_list.append(author_list)
-return_list.append(genre_list)
-return_list.append(release_date_list)
-return_list.append(image_source_list)
-return_list.append(description_list)
-print(return_list)
+# book = DBEBooks()
+# book.create_all_tables()
+# example_book(book)
+# result = book.select_all_books()
+# title_list = []
+# author_list = []
+# genre_list = []
+# release_date_list = []
+# image_source_list = []
+# description_list = []
+# return_list = []
+# for value in result:
+#     title_list.append(value[1])
+#     author_list.append(value[2])
+#     genre_list.append(value[3])
+#     release_date_list.append(value[4])
+#     image_source_list.append(value[5])
+#     description_list.append(value[6])
+#
+# return_list.append(title_list)
+# return_list.append(author_list)
+# return_list.append(genre_list)
+# return_list.append(release_date_list)
+# return_list.append(image_source_list)
+# return_list.append(description_list)
+# print(return_list)
