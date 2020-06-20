@@ -23,7 +23,28 @@ class DBEBooks(DBConnect):
             if row is None:
                 break
             result_list.append(row)
-        return result_list
+        title_list = []
+        author_list = []
+        genre_list = []
+        release_date_list = []
+        image_source_list = []
+        description_list = []
+        return_list = []
+        for value in result_list:
+            title_list.append(value[1])
+            author_list.append(value[2])
+            genre_list.append(value[3])
+            release_date_list.append(value[4])
+            image_source_list.append(value[5])
+            description_list.append(value[6])
+
+        return_list.append(title_list)
+        return_list.append(author_list)
+        return_list.append(genre_list)
+        return_list.append(release_date_list)
+        return_list.append(image_source_list)
+        return_list.append(description_list)
+        return return_list
 
     def select_books_by_genre(self, genre):
         result_list = []
