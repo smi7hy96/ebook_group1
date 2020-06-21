@@ -82,16 +82,14 @@ class DBEBooks(DBConnect):
         return result_list
 
     def select_books_by_name(self, name):
-        result_list = []
-        s = select([self.ebooks]).\
-            where(and_(self.ebooks.c.title.like(name)))
-        result = self.conn.execute(s)
-        while True:
-            row = result.fetchone()
-            if row is None:
-                break
-            result_list.append(row)
-        return result_list
+        s = self.session.query(self.ebooks).\
+            filter(self.ebooks.c.title.ilike('%{}%'.format(name))).all()
+        return s
+
+    def get_by_name(self, name):
+        result_list = self.select_books_by_name(name)
+        return_list = self.organise_list(result_list)
+        return return_list
 
     def select_one_book(self, book_id):
         result_list = []

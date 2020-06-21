@@ -36,7 +36,7 @@ def all_books():
     return render_template("all_books.html", titles=titles, authors=authors, genres=genres, release_dates=release_dates, image_sources=image_sources, descriptions=descriptions)
 
 
-@app.route("/all-books/<int:id>")
+@app.route("/book_id/<int:id>")
 def book_template(id):
     book = DBEBooks()
     book.create_all_tables()
@@ -57,9 +57,22 @@ def book_template(id):
     return render_template("book_template.html", title=title, author=author, genre=genre, release_date=release_date, image_source=image_source, description=description)
 
 
-@app.route("/book")
-def book():
-    return render_template("book.html")
+@app.route("/search_book")
+def search_book():
+    query = request.args['search']
+    book = DBEBooks()
+    book.create_all_tables()
+    example_book(book)
+    result_list = book.get_by_name(query)
+    titles = result_list[0]
+    authors = result_list[1]
+    genres = result_list[2]
+    release_dates = result_list[3]
+    image_sources = result_list[4]
+    descriptions = result_list[5]
+    return render_template("search_book.html", titles=titles, authors=authors, genres=genres, release_dates=release_dates,
+                           image_sources=image_sources, descriptions=descriptions, query=query)
+
 
 
 # Add new book page methods - untested until page templates created.

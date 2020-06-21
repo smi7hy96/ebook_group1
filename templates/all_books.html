@@ -29,10 +29,18 @@
         <a class="navbar-brand" href="/">Bookasaurus.io</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="all-books">All Books</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Books
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ url_for('all_books') }}">All Books</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Add Book</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Sign up</a>
@@ -41,8 +49,8 @@
                 <a class="nav-link" href="#">Log in</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+        <form class="form-inline my-2 my-lg-0" action="{{ url_for('search_book') }}">
+            <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
