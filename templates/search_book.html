@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"/>
-    <link rel="stylesheet" href="fonts/icomoon/style.css"/>
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            <link rel="stylesheet" href="fonts/icomoon/style.css" />
+            <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/magnific-popup.css') }}"/>
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/css/bootstrap-datepicker.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/aos.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}"/>
-    <title>Homepage</title>
+    <title>All Books</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -57,43 +57,23 @@
 </nav>
 
 <nav aria-label="breadcrumb" style="height: 52px; border-bottom: solid 1px #969696;">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Home</li>
-    </ol>
-</nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Search Results For '{{query}}'</li>
+      </ol>
+    </nav>
 
 <div class="site-section">
     <div class="container">
-        <div class="row mb-0">
-            <div class="col-md-5 ml-auto mb-0 order-md-2">
-                <img class="w-100 h-75" src="{{url_for('static', filename='images/one.jpg')}}" alt="Image"
-                     class="img-fluid rounded"/>
-            </div>
-            <div class="col-md-6 order-md-1">
-                <div class="text-left pb-1 border-primary mb-4">
-                    <h2 class="text-primary">Why choose us:</h2>
-                </div>
-                <p>It’s important to understand that you don’t have to be alone during the self-publishing process.
-                    Purpose Publishing has successfully helped thousands of authors with self-publishing, through
-                    consultations and self-publishing services, making Purpose Publishing one of the best
-                    self-publishing companies in the USA in the eyes of many.</p>
-                <p>
-                    Professional Editorial – Editing (i.e. proofreading) is included in most of our self-publishing
-                    packages. If you’ve ever tried to edit a book yourself, you know how difficult it can be. Leave it
-                    to the pros! Our editorial team has edited hundreds of successful self-published/traditionally
-                    published books, many for well-known/major publishing companies such as Simon & Schuster, Macmillan,
-                    Princeton University Press, and Barbour Publishing (Purpose Publishing is not officially affiliated
-                    with any of the aforementioned companies). Copy-editing is also available for an additional charge.
-                </p>
-            </div>
-        </div>
+            {% if titles|length > 0 %}
         <div class="text-center pb-1 border-primary mb-4">
-            <h2 class="text-primary">Book Showcase:</h2>
+        <h2 class="text-primary">Search Results For '{{query}}'</h2>
         </div>
         <div class="row">
-            {% for t in range(6) %}
+                {% for t in range(titles|length) %}
             <div class="col-md-12 mb-md-5 mb-3 col-lg-4">
                 <h2 class="font-weight-light text-primary">{{ titles[t] }}</h2>
+                <h3></h3>
 
                 <p class="text-gray aboutCard">Click image for more info</p>
                 <div class="flip-card w-100">
@@ -115,9 +95,13 @@
                     </div>
                 </div>
             </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                   <div class="text-center pb-1 border-primary mb-4">
+        <h2 class="text-primary">NO Results For '{{query}}. Try again'</h2>
         </div>
-    </div>
+            {% endif %}
+        </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
