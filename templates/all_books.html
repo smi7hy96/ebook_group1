@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/css/bootstrap-datepicker.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/aos.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}"/>
-    <title>Index</title>
+    <title>All Books</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,7 +26,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="navbar.html">Bookasaurus.io</a>
+        <a class="navbar-brand" href="/">Bookasaurus.io</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -47,6 +47,13 @@
         </form>
     </div>
 </nav>
+
+<nav aria-label="breadcrumb" style="height: 52px; border-bottom: solid 1px #969696;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">All Books</li>
+      </ol>
+    </nav>
 
 <div class="site-section">
     <div class="container">

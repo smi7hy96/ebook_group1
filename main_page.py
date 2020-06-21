@@ -36,7 +36,7 @@ def all_books():
     return render_template("all_books.html", titles=titles, authors=authors, genres=genres, release_dates=release_dates, image_sources=image_sources, descriptions=descriptions)
 
 
-@app.route("/book_template/<int:id>")
+@app.route("/all-books/<int:id>")
 def book_template(id):
     book = DBEBooks()
     book.create_all_tables()
