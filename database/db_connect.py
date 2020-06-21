@@ -1,4 +1,5 @@
 from sqlalchemy import *
+from sqlalchemy.orm import sessionmaker
 
 
 class DBConnect:
@@ -9,7 +10,8 @@ class DBConnect:
         self.users = None
         self.ebooks = None
         self.booking = None
-
+        Session = sessionmaker(bind=self.engine)
+        self.session = Session()
     def create_all_tables(self):
         users = Table('users', self.metadata,
                       Column('user_id', Integer, primary_key=True),
@@ -21,8 +23,11 @@ class DBConnect:
         ebooks = Table('ebooks', self.metadata,
                        Column('book_id', Integer, primary_key=True),
                        Column('title', String),
+                       Column('author', String),
                        Column('genre', String),
                        Column('release_date', String),
+                       Column('image_source', String),
+                       Column('description', String),
                        Column('user_id', None, ForeignKey('users.user_id'))
                        )
         self.ebooks = ebooks
@@ -33,4 +38,4 @@ class DBConnect:
                         Column('date', String)
                         )
         self.booking = booking
-        self.metadata.create_all(engine)
+        self.metadata.create_all(self.engine)
