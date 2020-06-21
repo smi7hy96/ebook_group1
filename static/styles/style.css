@@ -1404,13 +1404,14 @@ h1, h2, h3, h4, h5,
 .flip-card {
   background-color: transparent;
   width: 25vw;
-  height: 60vh;
+  height: 70vh;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 img{
 	width: 25vw;
-	height: 60vh;
+	height: 100%;
 }
+
 /* This container is needed to position the front and back side */
 .flip-card-inner {
   position: relative;
