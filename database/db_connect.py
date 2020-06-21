@@ -18,6 +18,7 @@ class DBConnect:
                       Column('name', String(20)),
                       Column('email', String(30)),
                       Column('phone_no', String(15)),
+                      Column('password', String())
                       )
         self.users = users
         ebooks = Table('ebooks', self.metadata,
