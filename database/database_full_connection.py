@@ -157,6 +157,7 @@ def insert_user(name, email, phone_no, password):
         result = conn.execute(ins)
         return result.inserted_primary_key
 
+
 def log_in(user_id, password):
     result = select_one_user(user_id)
     if len(result) == 0:
@@ -166,6 +167,18 @@ def log_in(user_id, password):
         return True
     else:
         return False
+
+
+def change_password(user_id, old_password, new_password):
+    if log_in(user_id, old_password):
+        hsh_pass = hash_password(new_password)
+        s = users.update().values(password=hsh_pass).\
+            where(users.c.user_id == user_id)
+        conn.execute(s)
+        return True
+    else:
+        return False
+
 
 def select_one_user(user_id):
     result_list = []
