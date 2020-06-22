@@ -12,6 +12,7 @@ class DBConnect:
         self.booking = None
         Session = sessionmaker(bind=self.engine)
         self.session = Session()
+
     def create_all_tables(self):
         users = Table('users', self.metadata,
                       Column('user_id', Integer, primary_key=True),
