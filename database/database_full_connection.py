@@ -7,9 +7,6 @@ engine = create_engine('sqlite:///:memory:', connect_args={'check_same_thread': 
 metadata = MetaData()
 conn = engine.connect()
 
-Session = sessionmaker(bind=engine)
-session = Session()
-
 users = Table('users', metadata,
               Column('user_id', Integer, primary_key=True),
               Column('name', String(20)),
@@ -37,6 +34,8 @@ booking = Table('booking', metadata,
                 )
 booking = booking
 metadata.create_all(engine)
+Session = sessionmaker(bind=engine)
+session = Session()
 
 
 def insert_ebook(title, author, genre, release_date, image_source, description, user_id=None):
