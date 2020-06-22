@@ -1,5 +1,5 @@
 from sqlalchemy import *
-from database.db_connect import DBConnect
+from database_old.db_connect import DBConnect
 import random
 
 
