@@ -65,13 +65,13 @@ def search_book():
 
 @app.route("/about_us")
 def about_us():
-    return render_template("about_us.html")
+    return render_template("about_us.html", user_id=current_user_id, name=name)
 
 
 # Add new book page methods - untested until page templates created.
 @app.route("/add_book")
 def add_book():
-    return render_template("add_book.html")
+    return render_template("add_book.html", user_id=current_user_id, name=name)
 
 @app.route("/add_new_book")
 def add_new_book():
