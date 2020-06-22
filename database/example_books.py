@@ -19,7 +19,7 @@ from database.database_full_connection import *
 
 
 
-# print(get_by_name('m'))
+# print(get_by_name('moby'))
 # print(select_six_random())
 # result = select_all_books()
 # title_list = []

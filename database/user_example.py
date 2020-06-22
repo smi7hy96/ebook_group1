@@ -13,4 +13,4 @@ insert_user("Avraj", "avraj@example.com", "0798452315", "avraj1")
 #     print("hey")
 
 # print(select_one_user(1))
-# print(change_password(1, "ryan1", "ryan2"))
+# print(change_password_func(1, "ryan1", "ryan2"))

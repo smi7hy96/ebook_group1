@@ -29,7 +29,7 @@ def all_books():
     image_sources = result_list[4]
     descriptions = result_list[5]
     book_ids = result_list[6]
-    return render_template("all_books.html", titles=titles, authors=authors, genres=genres, release_dates=release_dates, image_sources=image_sources, descriptions=descriptions, book_ids=book_ids)
+    return render_template("all_books.html", titles=titles, authors=authors, genres=genres, release_dates=release_dates, image_sources=image_sources, descriptions=descriptions, book_ids=book_ids, user_id=current_user_id, name=name)
 
 
 @app.route("/book_id/<int:id>")
@@ -46,7 +46,7 @@ def book_id(id):
     release_date = new_list[4]
     image_source = new_list[5]
     description = new_list[6]
-    return render_template("book_template.html", title=title, author=author, genre=genre, release_date=release_date, image_source=image_source, description=description)
+    return render_template("book_template.html", title=title, author=author, genre=genre, release_date=release_date, image_source=image_source, description=description, user_id=current_user_id, name=name)
 
 
 @app.route("/search_book")
@@ -60,7 +60,7 @@ def search_book():
     image_sources = result_list[4]
     descriptions = result_list[5]
     return render_template("search_book.html", titles=titles, authors=authors, genres=genres, release_dates=release_dates,
-                           image_sources=image_sources, descriptions=descriptions, query=query)
+                           image_sources=image_sources, descriptions=descriptions, query=query, user_id=current_user_id, name=name)
 
 
 @app.route("/about_us")
@@ -82,13 +82,13 @@ def add_new_book():
     image_source = request.args['image_source']
     description = request.args['description']
     return_num = insert_ebook(title, author, genre, release_date, image_source, description)
-    return render_template("book_template.html", title=title, author=author, genre=genre, release_date=release_date, image_source=image_source, description=description)
+    return render_template("book_template.html", title=title, author=author, genre=genre, release_date=release_date, image_source=image_source, description=description, user_id=current_user_id, name=name)
 
 
 @app.route("/go_to_login")
 def go_to_login(attempt=None):
     if current_user_id == 0:
-        return render_template("log-in.html", attempt=attempt)
+        return render_template("log-in.html", attempt=attempt, user_id=current_user_id, name=name)
     else:
         return redirect(url_for('home'))
 
@@ -97,20 +97,23 @@ def go_to_login(attempt=None):
 def log_in():
     user_id = request.form.get('user_id')
     password = request.form.get('password')
-    if log_in_user(user_id, password):
-        global current_user_id
-        current_user_id = user_id
-        new_list = []
-        result_list = select_one_user(user_id)
-        for result in result_list:
-            for value in result:
-                new_list.append(value)
-        global name
-        name = new_list[1]
-        print(name)
-        return redirect(url_for('home'))
+    global current_user_id
+    if current_user_id == 0:
+        if log_in_user(user_id, password):
+            current_user_id = user_id
+            new_list = []
+            result_list = select_one_user(user_id)
+            for result in result_list:
+                for value in result:
+                    new_list.append(value)
+            global name
+            name = new_list[1]
+            print(name)
+            return redirect(url_for('home'))
+        else:
+            return redirect(url_for('go_to_login'))
     else:
-        return redirect(url_for('go_to_login'))
+        return redirect(url_for('home'))
 
 
 @app.route("/logout")
@@ -122,9 +125,29 @@ def logout():
     return redirect(url_for('home'))
 
 
+@app.route("/change_password")
+def change_password():
+    if current_user_id != 0:
+        return render_template("change_password.html", user_id=current_user_id, name=name)
+    else:
+        return redirect(url_for("go_to_login"))
+
+
+@app.route("/change_password_complete", methods=['POST'])
+def change_password_complete():
+    old_password = request.form.get('old_pword')
+    new_password = request.form.get('new_password')
+    global current_user_id
+    if log_in_user(current_user_id, old_password):
+        change_password_func(current_user_id, old_password, new_password)
+        return redirect(url_for('home'))
+    else:
+        return redirect(url_for('change_password'))
+
+
 @app.route("/sign_up")
 def sign_up():
-    return render_template("sign-up.html")
+    return render_template("sign-up.html", user_id=current_user_id, name=name)
 
 
 @app.route("/sign_up_complete")
@@ -140,6 +163,24 @@ def sign_up_complete():
     current_user_id = return_num
     name = user_name
     return redirect(url_for('home'))
+
+
+@app.route("/view_account_details")
+def view_account_details():
+    global current_user_id
+    new_list = []
+    if current_user_id != 0:
+        result_list = select_one_user(current_user_id)
+        for result in result_list:
+            for value in result:
+                new_list.append(value)
+        a_user_id = new_list[0]
+        user_name = new_list[1]
+        email = new_list[2]
+        phone_no = new_list[3]
+        return render_template("view_account_details.html", a_user_id=a_user_id, user_name=user_name, email=email, phone_no=phone_no, user_id=current_user_id, name=name)
+    else:
+        return redirect(url_for("go_to_login"))
 
 
 if __name__ == "__main__":

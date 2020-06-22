@@ -127,7 +127,7 @@ def select_books_by_genre(genre):
 
 
 def select_books_by_name(name):
-    s = session.query(ebooks). \
+    s = session.query(ebooks).\
         filter(ebooks.c.title.ilike('%{}%'.format(name))).all()
     return s
 
@@ -171,7 +171,7 @@ def log_in_user(user_id, password):
         return False
 
 
-def change_password(user_id, old_password, new_password):
+def change_password_func(user_id, old_password, new_password):
     if log_in_user(user_id, old_password):
         hsh_pass = hash_password(new_password)
         s = users.update().values(password=hsh_pass).\
