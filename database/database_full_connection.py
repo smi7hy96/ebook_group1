@@ -158,19 +158,21 @@ def insert_user(name, email, phone_no, password):
         return result.inserted_primary_key
 
 
-def log_in(user_id, password):
+def log_in_user(user_id, password):
     result = select_one_user(user_id)
     if len(result) == 0:
         return False
     stored_pword = result[0][4]
     if verify_password(password, stored_pword):
+        print("TRUE")
         return True
     else:
+        print("FALSE")
         return False
 
 
 def change_password(user_id, old_password, new_password):
-    if log_in(user_id, old_password):
+    if log_in_user(user_id, old_password):
         hsh_pass = hash_password(new_password)
         s = users.update().values(password=hsh_pass).\
             where(users.c.user_id == user_id)

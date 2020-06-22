@@ -45,13 +45,26 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
+                    {% if user_id == 0 %}
                     Account
+                    {% else %}
+                    {{ name }}'s Account
+                    {% endif %}
                 </a>
+                 {% if user_id == 0 %}
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Sign Up</a>
+                    <a class="dropdown-item" href="{{ url_for('sign_up') }}">Sign Up</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Log-in</a>
+                    <a class="dropdown-item" href="{{ url_for('go_to_login') }}">Log-in</a>
                 </div>
+                 {% else %}
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Change Password</a>
+                    <a class="dropdown-item" href="#">View Account Details</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+                 {% endif %}
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="{{ url_for('search_book') }}">
@@ -60,7 +73,6 @@
         </form>
     </div>
 </nav>
-
 <nav aria-label="breadcrumb" style="height: 49px; border-bottom: solid 1px #969696;">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
